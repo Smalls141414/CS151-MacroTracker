@@ -10,5 +10,8 @@ This application helps users keep add and track all of their macronutrient intak
 ## Survey of Previous Works
 Many apps have been developed for macro tracking but many tend to get bogged down by unnecessary bloat. Our app will be focused on delivering a simple, efficient and accurate macro tracking system. Difficulties with quick data entry, accurate database, offline functionality.
 
+## Technical Description
+For this project, we will be using the Java programming language, and will be hosting all files locally.
+
 ## Intended Usage
 This application can be opened after every meal to add and store previous macronutrient information based on the time that it’s added. All data will be stored so that the software can analyze and display the information to the user in a clear and concise format.
