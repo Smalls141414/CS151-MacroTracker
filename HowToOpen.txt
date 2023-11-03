@@ -1,0 +1,12 @@
+How to Open with Eclipse:
+- Clone project to your device
+- Create new Java Project, uncheck create module-info.java
+- Drag all files from src file into new projects src
+ - You can copy the files or link, I'm not sure how well the link will work
+- Drag files from libraries into project
+- Highlight library files in eclipse, right click, go to build path -> add to build path
+- Run from Main.java!o
+
+
+When complete, if new libraries are added, add them to the libraries folder,
+All other files can be copy pasted from src to src, and then committed to GitHub repo.
