@@ -154,6 +154,9 @@ public class LoginPage extends JFrame {
     	if (bool)
     	{
     		JOptionPane.showMessageDialog(null, "Logged in Successfully!");
+    		this.dispose();
+    		UserData userData = new UserData();
+    		userData.setVisible(true);
     	}
     	else
     	{

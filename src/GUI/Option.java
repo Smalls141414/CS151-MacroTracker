@@ -55,9 +55,9 @@ class Option extends JFrame {
 		getContentPane().add(passwordLabel);
 
 		// Gmail Label
-		gmailLabel = new JLabel("Gmail: ");
-		gmailLabel.setBounds(10, 105, 56, 14);
-		getContentPane().add(gmailLabel);
+		//gmailLabel = new JLabel("Gmail: ");
+		//gmailLabel.setBounds(10, 105, 56, 14);
+		//getContentPane().add(gmailLabel);
 
 		// Privacy Label
 		privacyLabel = new JLabel("Privacy ");
@@ -97,6 +97,7 @@ class Option extends JFrame {
 		getContentPane().add(showButton);
 
 		// Edit Gmail Button
+		/*
 		editGmailButton = new JButton("Edit");
 		editGmailButton.setBounds(151, 101, 63, 23);
 		editGmailButton.addActionListener(new ActionListener() {
@@ -105,6 +106,7 @@ class Option extends JFrame {
 			}
 		});
 		getContentPane().add(editGmailButton);
+		*/
 
 		// List Button
 		listButton = new JButton("List");
