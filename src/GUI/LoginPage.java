@@ -149,18 +149,18 @@ public class LoginPage extends JFrame {
     	
     	db.connectToDatabase();
     	
-    	Boolean bool = db.checkCredentials(Username.getText(), getPasswordString(Password.getPassword()));
+    	int rowID = db.checkCredentialsAndGetRowID(Username.getText(), getPasswordString(Password.getPassword()));
     	
-    	if (bool)
+    	if (rowID != -1)
     	{
-    		JOptionPane.showMessageDialog(null, "Logged in Successfully!");
+    		JOptionPane.showMessageDialog(null, "Logged in Successfully!" + rowID);
     		this.dispose();
-    		UserData userData = new UserData();
+    		UserData userData = new UserData(rowID);
     		userData.setVisible(true);
     	}
     	else
     	{
-    		JOptionPane.showMessageDialog(null, "User not Found :)");
+    		JOptionPane.showMessageDialog(null, "User not Found :)" + rowID);
     	}
     	
     	db.closeConnection();
@@ -171,10 +171,16 @@ public class LoginPage extends JFrame {
         // TODO add your handling code here:
     	db.connectToDatabase();
     	
+    	int rowID;
+    	
     	try {
-    		db.insertUserName(Username.getText(), getPasswordString(Password.getPassword()));
+    		rowID = db.insertUserName(Username.getText(), getPasswordString(Password.getPassword()));
             // Registration was successful
     		JOptionPane.showMessageDialog(null, "Registration successful");
+    		this.dispose();
+    		SetGoals SetGoals = new SetGoals(rowID);
+    		SetGoals.setVisible(true);
+    		
         } catch (SQLIntegrityConstraintViolationException e) {
             // Unique username constraint violated
         	JOptionPane.showMessageDialog(null, "Username already exists. Please choose a different username.");
