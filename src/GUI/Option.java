@@ -12,22 +12,29 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import SQLite.DatabaseManager;
+
 @SuppressWarnings("serial")
 class Option extends JFrame {
-	JLabel optionLabel;
-	JLabel usernameLabel;
-	JLabel passwordLabel;
-	JLabel gmailLabel;
-	JLabel privacyLabel;
-	JButton btnNewButton;
-	JButton editUsernameButton;
-	JButton showButton;
-	JButton editGmailButton;
-	JButton listButton;
-	JLabel CensoredLabel;
-
-	public Option() {
+	private JLabel optionLabel;
+	private JLabel usernameLabel;
+	private JLabel passwordLabel;
+	private JLabel gmailLabel;
+	private JLabel privacyLabel;
+	private JButton btnNewButton;
+	private JButton editUsernameButton;
+	private JButton showButton;
+	private JButton editGmailButton;
+	private JButton listButton;
+	private JLabel CensoredLabel;
+	private DatabaseManager db = new DatabaseManager();
+	private int rowID;
+	public Option(int rowID) {
+		db.connectToDatabase();
+		this.rowID = rowID;
 		initialize();
+		db.closeConnection();
+		
 	}
 
 	private void initialize() {
@@ -125,7 +132,4 @@ class Option extends JFrame {
 		setVisible(true);
 	}
 
-	public static void main(String args[]) {
-		new Option();
-	}
 }
