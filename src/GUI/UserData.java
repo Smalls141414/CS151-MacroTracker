@@ -160,24 +160,25 @@ public class UserData extends javax.swing.JFrame {
                 .addContainerGap(100, Short.MAX_VALUE))
         );
         
-        JButton mainPageButton = new JButton("User Profile");
-		mainPageButton.addActionListener(new ActionListener() {
+        JButton optionButton = new JButton("Option");
+		optionButton.setBackground(new Color(128, 128, 128));
+		optionButton.setBounds(305, 20, 89, 23);
+		optionButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserProfileButtonActionPerformed(e);
+				optionButtonActionPerformed(e);
 			}
 		});
-		mainPageButton.setBackground(new Color(64, 224, 208));
-		mainPageButton.setBounds(170, 21, 89, 23);
-		this.add(mainPageButton);
+		this.add(optionButton);
 		
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    public void UserProfileButtonActionPerformed(ActionEvent e) {
-		UserProfile userProfile = new UserProfile(rowID);
-		userProfile.setVisible(true);
+    
+    public void optionButtonActionPerformed(ActionEvent e) {
+		Option option = new Option(rowID);
+		option.setVisible(true);
 		this.dispose();
 	}
+    
     
     private void fatsSelectButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	

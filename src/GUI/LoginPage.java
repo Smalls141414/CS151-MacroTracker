@@ -153,7 +153,7 @@ public class LoginPage extends JFrame {
     	
     	if (rowID != -1)
     	{
-    		JOptionPane.showMessageDialog(null, "Logged in Successfully!" + rowID);
+    		JOptionPane.showMessageDialog(null, "Logged in Successfully!\nUserID: " + rowID);
     		this.dispose();
     		UserData userData = new UserData(rowID);
     		userData.setVisible(true);

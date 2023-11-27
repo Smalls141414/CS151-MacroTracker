@@ -21,7 +21,7 @@ public class UserProfile extends JFrame {
 	JPanel panel2;
 	private DatabaseManager db = new DatabaseManager();
 	private int rowID;
-	private JButton btnNewButton;
+	private JButton logOutButton;
 
 	public UserProfile(int rowID) {
 		db.connectToDatabase();
@@ -104,12 +104,22 @@ public class UserProfile extends JFrame {
 		MacroGraphButton.setBounds(181, 31, 113, 23);
 		panel2.add(MacroGraphButton);
 
-		btnNewButton = new JButton("LOG OUT");
-		btnNewButton.setForeground(new Color(255, 0, 0));
-		btnNewButton.setBackground(new Color(255, 255, 255));
-		btnNewButton.setBounds(0, 215, 77, 23);
-		panel2.add(btnNewButton);
+		logOutButton = new JButton("LOG OUT");
+		logOutButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				logOutButtonActionPerformed(e);
+		}
+	});
+		logOutButton.setForeground(new Color(255, 0, 0));
+		logOutButton.setBackground(new Color(255, 255, 255));
+		logOutButton.setBounds(0, 215, 77, 23);
+		panel2.add(logOutButton);
 
+	}
+	public void logOutButtonActionPerformed(ActionEvent e) {
+		LoginPage loginPage = new LoginPage();
+		loginPage.setVisible(true);
+		this.dispose();
 	}
 
 	public void optionButtonActionPerformed(ActionEvent e) {
