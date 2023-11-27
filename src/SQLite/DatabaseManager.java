@@ -38,12 +38,7 @@ public class DatabaseManager {
             } else {
                 throw new SQLException("Failed to retrieve the last inserted rowid.");
             }
-            
-            
-        } 
-        
-        
-        
+        }         
         catch (SQLException e) {
         	
         	if (e.getErrorCode() == 19) {
@@ -57,8 +52,29 @@ public class DatabaseManager {
         	}
         	
         	return -1;
-            
+           
         }
+    }
+    public void deleteUserName(String userName, String password) throws SQLIntegrityConstraintViolationException {
+    	String insertQuery = "DELETE FROM database WHERE name = ? AND password = ?";
+    	try {
+    		PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+    		preparedStatement.setString(1, userName);
+    		preparedStatement.setString(2, password);
+    		preparedStatement.executeUpdate();
+    		
+    	} catch (SQLException e) {
+    		if (e.getErrorCode() == 19) {
+                // Unique constraint violation (error code 19)
+                throw new SQLIntegrityConstraintViolationException(e.getMessage(), e.getSQLState(), e.getErrorCode());
+            }
+        	else
+        	{
+        		e.printStackTrace();
+                // Handle the exception or throw it as needed
+        	}
+        	
+    	}
     }
 
     public int checkCredentialsAndGetRowID(String enteredUsername, String enteredPassword) {
