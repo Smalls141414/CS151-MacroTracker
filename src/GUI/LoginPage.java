@@ -189,17 +189,7 @@ public class LoginPage extends JFrame {
             e.printStackTrace();
         } finally {
             db.closeConnection();
-        }
-    
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
+        }   	
     	db.closeConnection();
     	
     }                                              

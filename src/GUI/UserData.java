@@ -5,6 +5,11 @@
 
 package GUI;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import SQLite.DatabaseManager;
 
 
@@ -33,7 +38,7 @@ public class UserData extends javax.swing.JFrame {
     	
 
     	
-
+    	this.setTitle("UserData");
         jLabel4 = new javax.swing.JLabel();
         fatsProgressBar = new javax.swing.JProgressBar();
         fatsProgressBar.setValue((db.fatsAte(rowID)*100)/db.fatsGoal(rowID));
@@ -154,10 +159,26 @@ public class UserData extends javax.swing.JFrame {
                     .addComponent(CalorieSelectButton))
                 .addContainerGap(100, Short.MAX_VALUE))
         );
-
+        
+        JButton mainPageButton = new JButton("User Profile");
+		mainPageButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UserProfileButtonActionPerformed(e);
+			}
+		});
+		mainPageButton.setBackground(new Color(64, 224, 208));
+		mainPageButton.setBounds(170, 21, 89, 23);
+		this.add(mainPageButton);
+		
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void UserProfileButtonActionPerformed(ActionEvent e) {
+		UserProfile userProfile = new UserProfile(rowID);
+		userProfile.setVisible(true);
+		this.dispose();
+	}
+    
     private void fatsSelectButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	
     	this.dispose();
