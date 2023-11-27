@@ -134,7 +134,9 @@ public class UserProfile extends JFrame {
 	}
 	
 	public void macroGraphButtonActionPerformed(ActionEvent e) {
-		//Need to add connection to macro graph here
+		Chart chart = new Chart(rowID);
+		chart.setVisible(true);
+		this.dispose();
 	}
 //	private String getName() {
 //		String sql = "";
