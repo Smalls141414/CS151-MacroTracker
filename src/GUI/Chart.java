@@ -57,8 +57,8 @@ public class Chart extends JFrame {
 		getContentPane().add(backButton);
     }
      public void backButtonActionPerformed(ActionEvent e) {
-		UserProfile userProfile = new UserProfile(rowID);
-		userProfile.setVisible(true);
+		UserData userdata = new UserData(rowID);
+		userdata.setVisible(true);
 		this.dispose();
 	}
 

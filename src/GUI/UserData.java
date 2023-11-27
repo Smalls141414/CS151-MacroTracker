@@ -160,12 +160,12 @@ public class UserData extends javax.swing.JFrame {
                 .addContainerGap(100, Short.MAX_VALUE))
         );
 
-        JButton profileButton = new JButton("Info");
+        JButton profileButton = new JButton("Graph");
         profileButton.setBackground(new  Color(128, 128, 128)); 
-        profileButton.setBounds(350, 20, 89, 23);
+        profileButton.setBounds(95, 20, 89, 23);
         profileButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                userProfileActionPerformed(e);
+                chartActionPerformed(e);
             }
         });
         this.add(profileButton);
@@ -189,9 +189,9 @@ public class UserData extends javax.swing.JFrame {
 		this.dispose();
 	}
 
-    public void userProfileActionPerformed(ActionEvent e) {
-        UserProfile userProfile = new UserProfile(rowID);
-        userProfile.setVisible(true);
+    public void chartActionPerformed(ActionEvent e) {
+        Chart chart = new Chart(rowID);
+        chart.setVisible(true);
         this.dispose();
     }
     
