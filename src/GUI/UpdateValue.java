@@ -91,7 +91,22 @@ public class UpdateValue extends javax.swing.JFrame {
 
         MacroSelectedLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         MacroSelectedLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        MacroSelectedLabel.setText("MacroSelected");
+        if(this.coloumnID.equals("Carbs_Ate"))
+        {
+        	MacroSelectedLabel.setText("Carbs");
+        }
+        else if(this.coloumnID.equals("Fat_Ate"))
+        {
+        	MacroSelectedLabel.setText("Fats");
+        }
+        else if(this.coloumnID.equals("Protein_Ate"))
+        {
+        	MacroSelectedLabel.setText("Protein");
+        }
+        else if(this.coloumnID.equals("Calorie_Ate"))
+        {
+        	MacroSelectedLabel.setText("Calorie");
+        }
         jPanel2.add(MacroSelectedLabel);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);

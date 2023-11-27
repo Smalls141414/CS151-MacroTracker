@@ -38,7 +38,7 @@ public class UserData extends javax.swing.JFrame {
     	
 
     	
-    	this.setTitle("UserData");
+    	this.setTitle("Macro Tracker");
         jLabel4 = new javax.swing.JLabel();
         fatsProgressBar = new javax.swing.JProgressBar();
         fatsProgressBar.setValue((db.fatsAte(rowID)*100)/db.fatsGoal(rowID));

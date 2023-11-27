@@ -153,14 +153,14 @@ public class LoginPage extends JFrame {
     	
     	if (rowID != -1)
     	{
-    		JOptionPane.showMessageDialog(null, "Logged in Successfully!\nUserID: " + rowID);
+    		JOptionPane.showMessageDialog(null, "Logged in Successfully!");
     		this.dispose();
     		UserData userData = new UserData(rowID);
     		userData.setVisible(true);
     	}
     	else
     	{
-    		JOptionPane.showMessageDialog(null, "User not Found :)" + rowID);
+    		JOptionPane.showMessageDialog(null, "User not Found :)");
     	}
     	
     	db.closeConnection();

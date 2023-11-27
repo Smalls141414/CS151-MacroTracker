@@ -4,13 +4,17 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.SwingConstants;
 
 import SQLite.DatabaseManager;
@@ -20,13 +24,15 @@ class Option extends JFrame {
 	private JLabel optionLabel;
 	private JLabel usernameLabel;
 	private JLabel passwordLabel;
-	private JLabel gmailLabel;
+	//private JLabel gmailLabel;
 	private JButton btnNewButton;
 	private JButton editUsernameButton;
-	private JButton showButton;
-	private JButton editGmailButton;
+	private JTextField editUsernameText;
+	private JPasswordField editPasswordText;
+	//private JButton showButton;
+	//private JButton editGmailButton;
 	private JButton backButton;
-	private JLabel CensoredLabel;
+	//private JLabel CensoredLabel;
 	private JButton logOutButton;
 	private DatabaseManager db = new DatabaseManager();
 	private int rowID;
@@ -41,7 +47,7 @@ class Option extends JFrame {
 
 	private void initialize() {
 		// frame
-		setTitle("Option");
+		setTitle("Options");
 		getContentPane().setBackground(new Color(192, 192, 192));
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -57,7 +63,7 @@ class Option extends JFrame {
 		// Username Label
 
 		usernameLabel = new JLabel("Username: ");
-		usernameLabel.setBounds(10, 52, 66, 14);
+		usernameLabel.setBounds(10, 52, 70, 14);
 		getContentPane().add(usernameLabel);
 
 		// Password Label
@@ -86,13 +92,14 @@ class Option extends JFrame {
 		editUsernameButton = new JButton("Edit");
 		editUsernameButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// edit username from database
+				UsernameEditButtonActionPerformed(e);
 			}
 		});
 		editUsernameButton.setBounds(168, 48, 63, 23);
 		getContentPane().add(editUsernameButton);
 
 		// Show Button
+		/*
 		showButton = new JButton("Show");
 		showButton.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		showButton.setBounds(10, 105, 66, 23);
@@ -102,7 +109,8 @@ class Option extends JFrame {
 
 			}
 		});
-		getContentPane().add(showButton);
+		**/
+		//getContentPane().add(showButton);
 		// Edit Gmail Button
 		/*
 		 * editGmailButton = new JButton("Edit"); editGmailButton.setBounds(151, 101,
@@ -123,14 +131,20 @@ class Option extends JFrame {
 		getContentPane().add(backButton);
 
 		// Censored Label
-		CensoredLabel = new JLabel("****");
-		CensoredLabel.setBounds(80, 77, 85, 14);
-		getContentPane().add(CensoredLabel);
+		editPasswordText = new JPasswordField(db.password(this.rowID));
+		editPasswordText.setBounds(80, 77, 85, 14);
+		getContentPane().add(editPasswordText);
 
 		JButton editUsernameButton_1 = new JButton("Edit");
 		editUsernameButton_1.setBounds(168, 73, 63, 23);
 		getContentPane().add(editUsernameButton_1);
-
+		editUsernameButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PasswordEditButtonActionPerformed(e);
+			}
+		});
+		
+		
 		logOutButton = new JButton("LOG OUT");
 		logOutButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -141,19 +155,67 @@ class Option extends JFrame {
 		logOutButton.setBounds(10, 167, 89, 23);
 		getContentPane().add(logOutButton);
 
-		JLabel userNameLabel = new JLabel("Username");
-		userNameLabel.setBounds(80, 52, 85, 14);
-		getContentPane().add(userNameLabel);
+		editUsernameText = new JTextField(db.username(this.rowID));
+		editUsernameText.setBounds(80, 52, 85, 14);
+		getContentPane().add(editUsernameText);
 		setBounds(100, 100, 312, 305);
 		setVisible(true);
 	}
 	public void deleteButtonActionPerformed(ActionEvent e) {
 		db.connectToDatabase();
-		if(rowID != 0) {
-			
+		
+		int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete your account?", "Delete Confirmation", JOptionPane.YES_NO_OPTION);
+		if (confirm == JOptionPane.YES_OPTION) {
+			if(rowID != 0) {
+				try {
+					db.deleteUserName(this.rowID);
+				} catch (SQLIntegrityConstraintViolationException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} finally
+				{
+					LoginPage loginPage = new LoginPage();
+					loginPage.setVisible(true);
+					this.dispose();
+				}
+			}
 		}
 	}
 
+	public void UsernameEditButtonActionPerformed(ActionEvent e) throws HeadlessException {
+		db.connectToDatabase();
+		String newUsername = editUsernameText.getText();
+		
+		if(!newUsername.equals(db.username(this.rowID)))
+		{
+			try{
+				db.updateUsername(this.rowID, newUsername);
+				JOptionPane.showMessageDialog(null, "Username changed!");
+			} catch(SQLIntegrityConstraintViolationException ex)
+			{
+				JOptionPane.showMessageDialog(null, "Username already taken");
+			}
+
+		}
+	}
+	
+	public void PasswordEditButtonActionPerformed(ActionEvent e) {
+		db.connectToDatabase();
+		@SuppressWarnings("deprecation")
+		String newPassword = editPasswordText.getText();
+		if(!newPassword.equals(db.password(this.rowID)))
+		{
+			try {
+				db.updatePassword(this.rowID, newPassword);
+				JOptionPane.showMessageDialog(null, "Password changed!");
+			} catch(Exception ex)
+			{
+				JOptionPane.showMessageDialog(null, "Password cannot be null");
+			}
+
+		}
+	}
+	
 	public void logOutButtonActionPerformed(ActionEvent e) {
 		LoginPage loginPage = new LoginPage();
 		loginPage.setVisible(true);

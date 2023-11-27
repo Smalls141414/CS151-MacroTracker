@@ -55,12 +55,11 @@ public class DatabaseManager {
            
         }
     }
-    public void deleteUserName(String userName, String password) throws SQLIntegrityConstraintViolationException {
-    	String insertQuery = "DELETE FROM database WHERE name = ? AND password = ?";
+    public void deleteUserName(int rowID) throws SQLIntegrityConstraintViolationException {
+    	String insertQuery = "DELETE FROM database WHERE rowID = ?";
     	try {
     		PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
-    		preparedStatement.setString(1, userName);
-    		preparedStatement.setString(2, password);
+    		preparedStatement.setInt(1, rowID);
     		preparedStatement.executeUpdate();
     		
     	} catch (SQLException e) {
@@ -310,7 +309,45 @@ public class DatabaseManager {
         }
         return 0; // Return 0 if there's an issue or no matching rowID
     }
+    
+    public String username(int rowID) {
+    	String sql = "SELECT username FROM database WHERE rowid = ?";
 
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, rowID);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getString("username");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null; // Return 0 if there's an issue or no matching rowID
+
+    }
+    
+    public String password(int rowID) {
+    	String sql = "SELECT password FROM database WHERE rowid = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, rowID);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getString("password");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null; // Return 0 if there's an issue or no matching rowID
+
+    }
+
+    
+    
     // SETTERS FOR DATABASE
     
     public void ProteinGoalWrite(int rowID, int newValue) {
@@ -402,6 +439,40 @@ public class DatabaseManager {
             updateStatement.setInt(1, updatedValue);
             updateStatement.setInt(2, rowID);
             updateStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void updateUsername(int rowID, String newUsername) throws SQLIntegrityConstraintViolationException {
+        String updateQuery = "UPDATE database SET username = ? WHERE rowid = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
+            preparedStatement.setString(1, newUsername);
+            preparedStatement.setInt(2, rowID);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+        	if (e.getErrorCode() == 19) {
+                // Unique constraint violation (error code 19)
+                throw new SQLIntegrityConstraintViolationException(e.getMessage(), e.getSQLState(), e.getErrorCode());
+            }
+        	else
+        	{
+        		e.printStackTrace();
+                // Handle the exception or throw it as needed
+        	}
+        }
+    }
+    
+    public void updatePassword(int rowID, String newPassword) {
+        String updateQuery = "UPDATE database SET password = ? WHERE rowid = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
+            preparedStatement.setString(1, newPassword);
+            preparedStatement.setInt(2, rowID);
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
