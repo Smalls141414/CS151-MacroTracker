@@ -159,6 +159,16 @@ public class UserData extends javax.swing.JFrame {
                     .addComponent(CalorieSelectButton))
                 .addContainerGap(100, Short.MAX_VALUE))
         );
+
+        JButton profileButton = new JButton("Info");
+        profileButton.setBackground(new  Color(128, 128, 128)); 
+        profileButton.setBounds(350, 20, 89, 23);
+        profileButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                userProfileActionPerformed(e);
+            }
+        });
+        this.add(profileButton);
         
         JButton optionButton = new JButton("Option");
 		optionButton.setBackground(new Color(128, 128, 128));
@@ -178,6 +188,12 @@ public class UserData extends javax.swing.JFrame {
 		option.setVisible(true);
 		this.dispose();
 	}
+
+    public void userProfileActionPerformed(ActionEvent e) {
+        UserProfile userProfile = new UserProfile(rowID);
+        userProfile.setVisible(true);
+        this.dispose();
+    }
     
     
     private void fatsSelectButtonActionPerformed(java.awt.event.ActionEvent evt) {
