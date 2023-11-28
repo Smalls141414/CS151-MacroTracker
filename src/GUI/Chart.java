@@ -42,20 +42,23 @@ public class Chart extends JFrame {
         }
     });
 
-    chartPanel.add(backButton, BorderLayout.SOUTH);
+   chartPanel.add(buildButtons(), BorderLayout.NORTH); 
+
     }
 
-    public void buildButtons() {
-         JButton backButton = new JButton("Back");
-		 backButton.setBackground(new Color(128, 128, 128));
-		 backButton.setBounds(100, 100, 89, 23);
-		 backButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				backButtonActionPerformed(e);
-			}
-		});
-		getContentPane().add(backButton);
-    }
+   public JPanel buildButtons() {
+    JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    JButton backButton = new JButton("Back");
+    backButton.setBackground(new Color(128, 128, 128));
+    backButton.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            backButtonActionPerformed(e);
+        }
+    });
+    buttonPanel.add(backButton);
+    return buttonPanel;
+}
+
      public void backButtonActionPerformed(ActionEvent e) {
 		UserData userdata = new UserData(rowID);
 		userdata.setVisible(true);
@@ -95,7 +98,7 @@ public class Chart extends JFrame {
     private class ChartPanel extends JPanel {
 
         public ChartPanel() {
-        setLayout(new BorderLayout());
+        setLayout(new FlowLayout(FlowLayout.CENTER));
         }
         @Override
         protected void paintComponent(Graphics g) {
@@ -113,17 +116,20 @@ public class Chart extends JFrame {
             g.drawLine(50, chartHeight, 50, 20); // Y-axis
 
             // Draw axis labels
-            int xLabelPosition = 50 + (getWidth() - 50) / (goalValues.size() * 2); 
+            int xLabelPosition = 50 + (getWidth() - 50) / (goalValues.size() * 3); 
+            Font axisLabelFont = new Font("Segoe UI", Font.PLAIN, 17);
             for (String nutrient : goalValues.keySet()) {
+                g.setFont(axisLabelFont);
                 g.drawString(nutrient, xLabelPosition, getHeight() - 5);
                 xLabelPosition += (getWidth() - 50) / goalValues.size();
             }
 
-            g.drawString("Macro Level", 10, getHeight() / 2);
+            g.drawString("Macro ", 0, getHeight() /2 - 14);
+            g.drawString("Level", 0, getHeight() / 2);
 
             // Draw title
             g.setFont(new Font("Segoe UI", Font.BOLD, 20));
-            g.drawString("Macronutrient Tracking Chart", (getWidth() - g.getFontMetrics().stringWidth("Macronutrient Tracking Chart")) / 2, 30);
+            g.drawString("Macronutrient Tracking Chart", (getWidth() - g.getFontMetrics().stringWidth("Macronutrient Tracking Chart")) / 2, 60);
 
             // Draw bars for each nutrient
             int xOffset = 0;
