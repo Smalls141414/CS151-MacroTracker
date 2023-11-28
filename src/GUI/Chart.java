@@ -173,12 +173,18 @@ public class Chart extends JFrame {
             g.drawString("Actual", keyX + 40, keyY + 55);
         }
 
-        private void drawBar(Graphics g, String label, int value, int barWidth, Color color, int xOffset) {
-            int chartHeight = getHeight() - 0;
+    private void drawBar(Graphics g, String label, int value, int barWidth, Color color, int xOffset) {
+            int chartHeight = getHeight() - 50;
 
-            int barHeight = (int) ((double) value / 100 * chartHeight);
+          
+            double scale = 0.2;  
+
+            
+            int maxBarHeight = 400;  
+            int barHeight = (int) Math.min(value * scale, maxBarHeight);
+
             int x = 50 + xOffset;
-            int y = chartHeight - barHeight - 50;
+            int y = chartHeight - barHeight ;
 
             g.setColor(color);
             g.fillRect(x, y, barWidth, barHeight);
@@ -187,9 +193,10 @@ public class Chart extends JFrame {
             g.drawRect(x, y, barWidth, barHeight);
 
             // Draw labels
-            //g.drawString(label, x + barWidth / 9 - label.length() * 1, getHeight() - 5);  // Adjusted the y-coordinate
+            //g.drawString(label, x + barWidth / 2 - g.getFontMetrics().stringWidth(label) / 2, getHeight() - 5);
             g.drawString(String.valueOf(value), x + barWidth / 2 - 10, y - 5);
-        }
+}
+
     }
 
 
