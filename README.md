@@ -1,8 +1,14 @@
 # CS 151 - Macro Tracker
 Team 8 - Ari Grady, Dev Ghai, Joshua Tanaka, Nikharv Domadiya
 
+## Brief Description of Application
+*Include full description of the application and how it works*
+
 ## Problem
 Monitoring a balanced diet can be difficult and convoluted to keep track of. For newcomers who are new to keeping track of their diet, this can make it almost impossible to start properly tracking macronutrients. Without a macro tracker, tracking macronutrients can be cumbersome and take a lot of mental energy, but with many newer apps, the amount of added features can go over the peak and make it even more cumbersome than originally. For these newcomers, a simple macro tracker can be crucial to creating a balanced diet.
+
+## How Our Project Solves Our Problem
+Our Macro Tracker Project is perfect for allowing newcomers to start keeping track of their diet. The simple design allows people new to creating balanced diets to track carbs, proteins, fats and calories through a clearly visible format.
 
 ## Functionality
 This application helps users keep add and track all of their macronutrient intake, which includes carbohydrates, proteins, and fats. This ensures they are consuming a balanced diet, which is important for overall health and fitness and allows users to set calorie goals.  Different user profiles may be created for multiple users to track their separate diets. There will also be a graph that will span months from when the user first started to the present which will showcase whether or not they are on schedule for their diet. The app will aim for a simple but efficient user interface and functionality. 
@@ -13,5 +19,11 @@ Many apps have been developed for macro tracking but many tend to get bogged dow
 ## Technical Description
 For this project, we will be using the Java programming language, and will be hosting all files locally via an SQLite database.
 
+## Snapshot of Working Program and UML Class Diagram
+*Make sure to remove Person.java from UML Diagram*
+
 ## Intended Usage
 This application can be opened after every meal to add and store previous macronutrient information based on the time that it’s added. All data will be stored so that the software can analyze and display the information to the user in a clear and concise format.
+
+## Steps to Run Code
+*Include how to function code and how to run jar file if working*
