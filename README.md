@@ -1,8 +1,8 @@
 # CS 151 - Macro Tracker
 Team 8 - Ari Grady, Dev Ghai, Joshua Tanaka, Nikharv Domadiya
 
-## Brief Description of Application
-*Include full description of the application and how it works*
+## Description
+*Include brief description of the application and how it works*
 
 ## Problem
 Monitoring a balanced diet can be difficult and convoluted to keep track of. For newcomers who are new to keeping track of their diet, this can make it almost impossible to start properly tracking macronutrients. Without a macro tracker, tracking macronutrients can be cumbersome and take a lot of mental energy, but with many newer apps, the amount of added features can go over the peak and make it even more cumbersome than originally. For these newcomers, a simple macro tracker can be crucial to creating a balanced diet.
@@ -19,7 +19,8 @@ Many apps have been developed for macro tracking but many tend to get bogged dow
 ## Technical Description
 For this project, we will be using the Java programming language, and will be hosting all files locally via an SQLite database.
 
-## Snapshot of Working Program and UML Class Diagram
+## Screenshots and UML Class Diagram
+*Snapshot of working Program*
 *Make sure to remove Person.java from UML Diagram*
 
 ## Intended Usage
