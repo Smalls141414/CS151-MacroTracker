@@ -21,7 +21,9 @@ For this project, we will be using the Java programming language, and will be ho
 
 ## Screenshots and UML Class Diagram
 *Snapshot of working Program*
-*Make sure to remove Person.java from UML Diagram*
+
+[UML:] (https://lucid.app/lucidchart/576901dd-be6d-43b9-a37d-876621fd4ed1/edit?invitationId=inv_c84dcde7-e6f0-4e08-9dfd-39a2b5d6ed80)
+<img width="721" alt="Screen Shot 2023-12-08 at 10 55 59 PM" src="https://github.com/Smalls141414/CS151-MacroTracker/assets/22310942/088cadba-f9b2-4f58-883c-c74873caa2e5">
 
 ## Intended Usage
 This application can be opened after every meal to add and store previous macronutrient information based on the time that it’s added. All data will be stored so that the software can analyze and display the information to the user in a clear and concise format.
