@@ -134,14 +134,14 @@ public class Chart extends JFrame {
             // Draw bars for each nutrient
             int xOffset = 0;
             for (String nutrient : goalValues.keySet()) {
-                int goal = goalValues.get(nutrient);
-                int actual = actualValues.get(nutrient);
+                double goal = goalValues.get(nutrient);
+                double actual = actualValues.get(nutrient);
 
                 // Draw goal bar
-                drawBar(g, nutrient + " Goal", goal, barWidth, new Color(70, 130, 180), xOffset);
+                drawBar(g, nutrient + " Goal", goal/goal, barWidth, new Color(70, 130, 180), xOffset, goal);
 
                 // Draw actual bar
-                drawBar(g, nutrient + " Actual", actual, barWidth, new Color(135, 206, 250), xOffset + barWidth + 10);
+                drawBar(g, nutrient + " Actual", actual/goal, barWidth, new Color(135, 206, 250), xOffset + barWidth + 10, actual);
 
                 xOffset += 2 * (barWidth + 10);
             }
@@ -173,11 +173,11 @@ public class Chart extends JFrame {
             g.drawString("Actual", keyX + 40, keyY + 55);
         }
 
-    private void drawBar(Graphics g, String label, int value, int barWidth, Color color, int xOffset) {
+    private void drawBar(Graphics g, String label, double value, int barWidth, Color color, int xOffset, double valueLabel) {
             int chartHeight = getHeight() - 50;
 
           
-            double scale = 0.2;  
+            double scale = 400;  
 
             
             int maxBarHeight = 400;  
@@ -194,7 +194,7 @@ public class Chart extends JFrame {
 
             // Draw labels
             //g.drawString(label, x + barWidth / 2 - g.getFontMetrics().stringWidth(label) / 2, getHeight() - 5);
-            g.drawString(String.valueOf(value), x + barWidth / 2 - 10, y - 5);
+            g.drawString(String.valueOf(valueLabel), x + barWidth / 2 - 10, y - 5);
 }
 
     }
