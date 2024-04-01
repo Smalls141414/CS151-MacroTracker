@@ -24,10 +24,8 @@ For this project, we will be using the Java programming language, and will be ho
 ![image](https://github.com/Smalls141414/CS151-MacroTracker/assets/146876486/7f213819-148f-4cc0-b2fb-60b11b656afe)
 ![image](https://github.com/Smalls141414/CS151-MacroTracker/assets/146876486/ecdc2fdc-c4fd-4098-8143-dad0d398c8ff)
 ![image](https://github.com/Smalls141414/CS151-MacroTracker/assets/146876486/20d9ac1c-2c0c-460e-9576-033e9db5a51c)
-![image](https://github.com/Smalls141414/CS151-MacroTracker/assets/146876486/ea532fd3-bb04-48e7-bcbd-eb9290ff185d)
 ![image](https://github.com/Smalls141414/CS151-MacroTracker/assets/146876486/a5a12046-2859-4dd8-bd0b-2a2016f8a7da)
-![image](https://github.com/Smalls141414/CS151-MacroTracker/assets/146876486/177fde8f-0440-43bc-965b-1aea208b0a79)
-
+<img width="1265" alt="Screenshot 2024-04-01 at 7 46 59 AM" src="https://github.com/Smalls141414/CS151-MacroTracker/assets/101848838/c5ffd24e-02ab-4bee-996d-4d1841f3ea4c">
 
 [UML:] (https://lucid.app/lucidchart/576901dd-be6d-43b9-a37d-876621fd4ed1/edit?invitationId=inv_c84dcde7-e6f0-4e08-9dfd-39a2b5d6ed80)
 <img width="721" alt="Screen Shot 2023-12-08 at 10 55 59 PM" src="https://github.com/Smalls141414/CS151-MacroTracker/assets/22310942/088cadba-f9b2-4f58-883c-c74873caa2e5">
